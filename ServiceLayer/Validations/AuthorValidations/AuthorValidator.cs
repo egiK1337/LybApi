@@ -1,12 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ServiceLayer.Validations.AuthorValidations
+﻿namespace ServiceLayer.Validations.AuthorValidations
 {
-    internal class AuthorValidator
+    public class AuthorValidator : AbstractValidator<AuthorDto>
     {
+        public AuthorValidator()
+        {
+            RuleFor(authorDto => authorDto)
+              .NotNull()
+              .NotEmpty()
+              .WithMessage("Request is empty");
+
+            RuleFor(authorDto => authorDto.Name)
+                .NotNull()
+                .NotEmpty()
+                .WithMessage("There was entered incorrectly");
+
+            RuleFor(authorDto => authorDto.WebUrl)
+               .NotNull()
+               .NotEmpty()
+               .WithMessage("There was entered incorrectly");
+        }
     }
 }

@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ServiceLayer.Abstractions.Filters.Author
+﻿namespace ServiceLayer.Abstractions.Filter
 {
-    internal class AuthorFilterDto
+    public class AuthorFilterDto
     {
+        public string FirstName { get; set; }
+        public string? WebUrl { get; set; }
+
+        public AuthorFilterDto()
+        {
+
+        }
     }
 }

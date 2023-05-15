@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ServiceLayer.Abstractions.Filter;
 
-namespace ServiceLayer.Abstractions.DTO.Book
+namespace ServiceLayer.Abstractions.DTO
 {
-    internal class SortFilterPageOptions
+    public class SortFilterPageOptions : Abstractions.Pagination
     {
+        public BooksFilter Filter { get; set; }
+        public OrderByOptions OrderByOptions { get; set; }
     }
 }
+

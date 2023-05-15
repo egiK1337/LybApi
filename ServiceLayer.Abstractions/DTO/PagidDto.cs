@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ServiceLayer.Abstractions.DTO
+﻿namespace ServiceLayer.Abstractions.DTO
 {
-    internal class PagidDto
+    public class PagedDto
     {
+        [JsonProperty(PropertyName = "page_number")]
+        public int PageNumber { get; set; }
+
+        [JsonProperty(PropertyName = "all_pages_numbers")]
+        public int AllPagesNumbers { get; set; }
+
+        public PagedDto()
+        {
+        }
     }
 }

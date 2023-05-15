@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ServiceLayer.Abstractions.Filters.Book
+﻿namespace ServiceLayer.Abstractions.Filter
 {
-    internal class BooksFilter
+    public class BooksFilter
     {
+        public int HighPrice;
+
+        public int LowPrice;
+
+        public ICollection<string>? Tags { get; set; }
+
+        public ICollection<string>? Titles { get; set; }
+
+        public DateTime? DatePublishedFrom { get; set; }
+
+        public DateTime? DatePublishedTo { get; set; }
+
+        public BooksFilter()
+        {
+        }
     }
 }
+

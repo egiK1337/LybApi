@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ServiceLayer.Abstractions.DTO.Book
+﻿namespace ServiceLayer.Abstractions.DTO
 {
-    internal class ReviewAddDto
+    public class ReviewAddDto
     {
+        public string VoterName { get; set; }
+        public int NumStars { get; set; }
+        public string Comment { get; set; }
+
+        public int BookId { get; set; }
+
+        public ReviewAddDto()
+        {
+
+        }
     }
 }
