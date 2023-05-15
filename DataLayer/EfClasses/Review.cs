@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace DataLayer.EfClasses;
 
-namespace DataLayer.EfClasses
+public class Review
 {
-    internal class Review
+    public Review()
     {
     }
+
+    public int Id { get; set; }
+    public string VoterName { get; set; } = string.Empty;
+    public int NumStars { get; set; }
+    public string Comment { get; set; } = string.Empty;
+
+    public int BookId { get; set; }
 }

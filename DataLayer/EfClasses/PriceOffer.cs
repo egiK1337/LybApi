@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace DataLayer.EfClasses;
 
-namespace DataLayer.EfClasses
+public class PriceOffer
 {
-    internal class PriceOffer
+    public PriceOffer()
     {
     }
+
+    public int Id { get; set; }
+    public string PromotionalText { get; set; } = string.Empty;
+    public decimal NewPrice { get; set; }
+
+    public int BookId { get; set; }
 }

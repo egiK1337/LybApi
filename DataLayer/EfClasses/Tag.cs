@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DataLayer.EfClasses
+namespace DataLayer.EfClasses;
+
+public class Tag
 {
-    internal class Tag
+    public Tag()
     {
     }
+
+    [Key]
+    [Required]
+    [MaxLength(40)]
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
+    public string Id { get; set; } = string.Empty;
+
+    public ICollection<Book> Books { get; set; }
 }
