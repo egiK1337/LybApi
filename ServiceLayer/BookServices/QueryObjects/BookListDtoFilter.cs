@@ -1,4 +1,8 @@
-﻿namespace ServiceLayer.BookServices.QueryObjects
+﻿using DataLayer.EfClasses;
+using LinqKit;
+using ServiceLayer.Abstractions.Filter;
+
+namespace ServiceLayer.BookServices.QueryObjects
 {
     static public class BookListDtoFilter
     {

@@ -1,4 +1,6 @@
-﻿namespace ServiceLayer
+﻿using ServiceLayer.Abstractions;
+
+namespace ServiceLayer
 {
     public static class GenericPaging
     {

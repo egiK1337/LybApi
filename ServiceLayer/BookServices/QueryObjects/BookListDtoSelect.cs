@@ -1,4 +1,7 @@
-﻿namespace ServiceLayer.BookServices.QueryObjects
+﻿using DataLayer.EfClasses;
+using ServiceLayer.Abstractions.DTO;
+
+namespace ServiceLayer.BookServices.QueryObjects
 {
     public static class BookListDtoSelect
     {

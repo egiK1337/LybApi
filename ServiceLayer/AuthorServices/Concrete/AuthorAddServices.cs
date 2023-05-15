@@ -1,4 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DataLayer.EfClasses;
+using DataLayer.EfCode;
+using FluentValidation.Results;
+using ServiceLayer.Abstractions;
+using ServiceLayer.Abstractions.DTO;
+using ServiceLayer.Validations.AuthorValidations;
+
 
 namespace ServiceLayer.AuthorServices.Concrete
 {

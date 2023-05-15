@@ -1,4 +1,6 @@
-﻿namespace ServiceLayer.Abstractions.DTO
+﻿using Newtonsoft.Json;
+
+namespace ServiceLayer.Abstractions.DTO
 {
     public class PagedDto
     {

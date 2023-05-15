@@ -1,4 +1,6 @@
-﻿namespace BookConsoleApp
+﻿using Microsoft.Extensions.Logging;
+
+namespace BookConsoleApp
 {
     public class MyLoggerProvider
     {

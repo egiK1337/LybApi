@@ -1,4 +1,7 @@
-﻿namespace ServiceLayer.BookServices.QueryObjects
+﻿using ServiceLayer.Abstractions;
+using ServiceLayer.Abstractions.DTO;
+
+namespace ServiceLayer.BookServices.QueryObjects
 {
     static public class BookListDtoSort
     {

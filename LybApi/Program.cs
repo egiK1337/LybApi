@@ -1,3 +1,6 @@
+using DataLayer.EfCode;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // получаем строку подключения из файла конфигурации

@@ -1,4 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DataLayer.EfClasses;
+using DataLayer.EfCode;
+using ServiceLayer.Abstractions;
+using ServiceLayer.Abstractions.DTO;
+using ServiceLayer.Validations.BookValidations;
+using System.ComponentModel.DataAnnotations;
 
 namespace ServiceLayer.BookServices.Concrete
 {

@@ -1,4 +1,7 @@
-﻿namespace ServiceLayer.Validations.AuthorValidations
+﻿using FluentValidation;
+using ServiceLayer.Abstractions.DTO;
+
+namespace ServiceLayer.Validations.AuthorValidations
 {
     public class AuthorValidator : AbstractValidator<AuthorDto>
     {

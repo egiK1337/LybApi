@@ -1,4 +1,7 @@
-﻿namespace ServiceLayer.Validations.BookValidations
+﻿using FluentValidation;
+using ServiceLayer.Abstractions.DTO;
+
+namespace ServiceLayer.Validations.BookValidations
 {
     public class BookValidator : AbstractValidator<BookAddDto>
     {

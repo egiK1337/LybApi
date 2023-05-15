@@ -1,4 +1,12 @@
-﻿namespace ServiceLayer.BookServices.Concrete
+﻿using DataLayer.EfClasses;
+using DataLayer.EfCode;
+using LinqKit;
+using Microsoft.AspNetCore.Mvc;
+using ServiceLayer.Abstractions;
+using ServiceLayer.Abstractions.DTO;
+using ServiceLayer.Abstractions.Filter;
+
+namespace ServiceLayer.BookServices.Concrete
 {
     public class BookListService : ControllerBase
     {

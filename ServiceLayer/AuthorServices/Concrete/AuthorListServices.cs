@@ -1,4 +1,11 @@
-﻿namespace ServiceLayer.AuthorServices.Concrete
+﻿using DataLayer.EfCode;
+using LinqKit;
+using Microsoft.AspNetCore.Mvc;
+using ServiceLayer.Abstractions;
+using ServiceLayer.Abstractions.DTO;
+using ServiceLayer.Abstractions.Filter;
+
+namespace ServiceLayer.AuthorServices.Concrete
 {
     public class AuthorListServices
     {

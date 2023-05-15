@@ -1,4 +1,6 @@
-﻿namespace ServiceLayer.Abstractions
+﻿using Newtonsoft.Json;
+
+namespace ServiceLayer.Abstractions
 {
     public enum OrderByOptions
     {
