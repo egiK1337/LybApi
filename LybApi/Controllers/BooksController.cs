@@ -3,7 +3,7 @@ using LybApi.Controllers.Base;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Abstractions;
 using ServiceLayer.Abstractions.DTO;
-using ServiceLayer.Abstractions.Filter;
+using ServiceLayer.Abstractions.ReturnResult;
 using ServiceLayer.BookServices.Concrete;
 
 namespace LybApi.Controllers;
@@ -12,44 +12,44 @@ namespace LybApi.Controllers;
 [Route("[controller]")]
 public class BooksController : BaseController
 {
+    private readonly BookAddService _bookAddService;
 
+    private readonly BookListService _bookListService;
 
-    private readonly EfCoreContext _context;
+    //private readonly EfCoreContext _context;
 
-
+    public BooksController(EfCoreContext context)
+    {
+        _bookAddService = new BookAddService(context);
+        _bookListService = new BookListService(context);
+    }
 
     [HttpPost]
     [Route("BooksList")]
     public List<BookListDto> BooksList([FromBody] Pagination pagenation)
     {
-        var bookListService = new BookListService(_context);
-
-        return bookListService.List(pagenation);
+        return _bookListService.List(pagenation);
     }
 
     [HttpGet]
     [Route("BookGetById/{bookId:int}")]
     public BookDto BookGetById(int bookId)
     {
-        var bookListService = new BookListService(_context);
-
-        return bookListService.GetById(bookId);
+        return _bookListService.GetById(bookId);
     }
 
     [HttpPost]
     [Route("BooksQuery")]
-    public List<BookListDto> BooksQuery(BooksFilter bookFilter, Pagination pagenation)
+    public PagedDto<BookListDto> BooksQuery(SortFilterPageOptions filterPageOptions)
     {
-        var bookListService = new BookListService(_context);
-        return bookListService.Query(bookFilter, pagenation);
+        return _bookListService.Query(filterPageOptions);
     }
 
     [HttpPost]
     [Route("BookAdd")]
     public ReturnBookResult Add(BookAddDto bookAddDto)
     {
-        var bookAddService = new BookAddService(_context);
-        return bookAddService.Add(bookAddDto);
+        return _bookAddService.Add(bookAddDto);
     }
 
 }

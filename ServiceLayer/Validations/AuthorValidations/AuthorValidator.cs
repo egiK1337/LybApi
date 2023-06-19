@@ -7,20 +7,11 @@ namespace ServiceLayer.Validations.AuthorValidations
     {
         public AuthorValidator()
         {
-            RuleFor(authorDto => authorDto)
-              .NotNull()
-              .NotEmpty()
-              .WithMessage("Request is empty");
-
             RuleFor(authorDto => authorDto.Name)
-                .NotNull()
-                .NotEmpty()
-                .WithMessage("There was entered incorrectly");
+                .NotEmpty();
 
             RuleFor(authorDto => authorDto.WebUrl)
-               .NotNull()
-               .NotEmpty()
-               .WithMessage("There was entered incorrectly");
+               .NotEmpty();
         }
     }
 }

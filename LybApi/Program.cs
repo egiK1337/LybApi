@@ -8,7 +8,7 @@ var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // добавл€ем контекст ApplicationContext в качестве сервиса в приложение/ Ёто поле сервиса которое будет жить всегда когда наше прилождение запустилось
 //в него можно накидывать разные полезные плюшки
-builder.Services.AddDbContext<EfCoreContext>(options => options.UseSqlServer(connection));
+builder.Services.AddDbContext<EfCoreContext>(options => options.UseNpgsql(connection));
 
 
 
@@ -74,4 +74,11 @@ app.Run();
 //27 –азобратьс€ в пагинации
 //28 удалить старые миграции и сделать миграцию (-Project -Datalayer) убедитьс€, что default project LibraryApi
 //29 избавитс€ от зависимости от лайбраријпи с сервис(бизнес) логикой
-
+//30 создать папку returnResult в сервисЋэйер.јбстракшионс +
+//31readOnly  -
+//32  +
+//в резалте dont serialize field in json c#
+//рихтер -
+//34 необ€зательные параметры
+//35 рефакторинг returnAuthorResult
+//36 рефакторинг returnResult<T> c генериком когда решу задачу с автором и начну делать с книгой

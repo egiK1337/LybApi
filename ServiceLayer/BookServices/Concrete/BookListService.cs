@@ -1,10 +1,8 @@
-﻿using DataLayer.EfClasses;
-using DataLayer.EfCode;
-using LinqKit;
+﻿using DataLayer.EfCode;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Abstractions;
 using ServiceLayer.Abstractions.DTO;
-using ServiceLayer.Abstractions.Filter;
+using ServiceLayer.BookServices.QueryObjects;
 
 namespace ServiceLayer.BookServices.Concrete
 {
@@ -17,22 +15,21 @@ namespace ServiceLayer.BookServices.Concrete
             _context = context;
         }
 
-        //public IQueryable<BookListDto> GetBookList()
-        //{
-        //    return _context.Books.MapBookToDto();
-        //}
 
-        //public IQueryable<BookListDto> SortFilterPage(SortFilterPageOptions options)
-        //{
-        //    var booksQuery = _context.Books
-        //        .AsNoTracking()
-        //        .FilterBooksBy(options.Filter)
-        //        .MapBookToDto()
-        //        .OrderBooksBy(options.OrderByOptions);
+        //check it  . i deleted .AsNoTracking()
 
-        //    return booksQuery.Paginate(options);
+        public IQueryable<BookListDto> SortFilterPage(SortFilterPageOptions options)
+        {
+            var booksQuery = _context.Books
 
-        //}
+                .FilterBooksBy(options.Filter)
+                .MapBookToDto()
+                .OrderBooksBy(options.OrderByOptions);
+
+            return booksQuery.Paginate(options);
+
+        }
+
         public List<BookListDto> List(Pagination pagenation)
         {
             var result = _context.Books.Paginate(pagenation).ToList();
@@ -73,64 +70,75 @@ namespace ServiceLayer.BookServices.Concrete
                 throw new Exception("Такой книги нет");
             }
         }
-
-
-        public List<BookListDto> Query(BooksFilter bookFilter, Pagination pagenation)
+        public PagedDto<BookListDto> Query(SortFilterPageOptions filterPageOptions)
         {
-            List<string> errors = new();
+            var service = new BookListService(_context);
 
-            if (bookFilter?.HighPrice < bookFilter?.LowPrice)
-            {
-                errors.Add("Максимальная цена меньше минимальной; ");
-            }
-            if (bookFilter?.HighPrice < 0 || bookFilter?.LowPrice < 0)
-            {
-                errors.Add("Минимальная или максимальная цена указана ниже нуля; ");
-            }
+            var items = service.SortFilterPage(filterPageOptions);
 
-            string message = "Список ошибок: ";
+            return new PagedDto<BookListDto>(
+                items,
+                filterPageOptions.PageNum,
+                filterPageOptions.NumPages);
 
-            if (errors.Count > 0)
-            {
-                foreach (var error in errors)
-                {
-                    message += error;
-                }
-                throw new Exception(message);
-            }
-
-            var predicate = PredicateBuilder.New<Book>(true);
-
-            //predicate условия суммируются это значи, что опертор .And (.Or) добавляет к предедущему условию новое и ряд условий растёт.
-
-            if (bookFilter.Titles != null)
-            {
-                predicate = predicate.And(i => bookFilter.Titles.Contains(i.Title));
-            }
-            if (bookFilter.LowPrice > 0)
-            {
-                predicate = predicate.And(i => i.Price >= bookFilter.LowPrice);
-            }
-            if (bookFilter.HighPrice > 0)
-            {
-                predicate = predicate.And(i => i.Price <= bookFilter.HighPrice);
-            }
-
-            return _context.Books
-                .Paginate(pagenation)
-                .Where(predicate)
-                .Select(book => new BookListDto
-                {
-                    Description = book.Description,
-                    ImageUrl = book.ImageUrl,
-                    Price = book.Price,
-                    PublishedOn = book.PublishedOn,
-                    Publisher = book.Publisher,
-                    Title = book.Title,
-                    Count = book.Count,
-                    Id = book.Id
-                }).ToList();
         }
+
+        //public List<BookListDto> Query(SortFilterPageOptions filterPageOptions)
+        //{
+        //    List<string> errors = new();
+
+        //    if (filterPageOptions.Filter?.HighPrice < filterPageOptions.Filter?.LowPrice)
+        //    {
+        //        errors.Add("Максимальная цена меньше минимальной; ");
+        //    }
+        //    if (filterPageOptions.Filter?.HighPrice < 0 || filterPageOptions.Filter?.LowPrice < 0)
+        //    {
+        //        errors.Add("Минимальная или максимальная цена указана ниже нуля; ");
+        //    }
+
+        //    string message = "Список ошибок: ";
+
+        //    if (errors.Count > 0)
+        //    {
+        //        foreach (var error in errors)
+        //        {
+        //            message += error;
+        //        }
+        //        throw new Exception(message);
+        //    }
+
+        //    var predicate = PredicateBuilder.New<Book>(true);
+
+        //    //predicate условия суммируются это значи, что опертор .And (.Or) добавляет к предедущему условию новое и ряд условий растёт.
+
+        //    if (filterPageOptions.Filter.Titles != null)
+        //    {
+        //        predicate = predicate.And(i => filterPageOptions.Filter.Titles.Contains(i.Title));
+        //    }
+        //    if (filterPageOptions.Filter.LowPrice > 0)
+        //    {
+        //        predicate = predicate.And(i => i.Price >= filterPageOptions.Filter.LowPrice);
+        //    }
+        //    if (filterPageOptions.Filter.HighPrice > 0)
+        //    {
+        //        predicate = predicate.And(i => i.Price <= filterPageOptions.Filter.HighPrice);
+        //    }
+
+        //    return _context.Books
+        //        .Paginate(filterPageOptions)
+        //        .Where(predicate)
+        //        .Select(book => new BookListDto
+        //        {
+        //            Description = book.Description,
+        //            ImageUrl = book.ImageUrl,
+        //            Price = book.Price,
+        //            PublishedOn = book.PublishedOn,
+        //            Publisher = book.Publisher,
+        //            Title = book.Title,
+        //            Count = book.Count,
+        //            Id = book.Id
+        //        }).ToList();
+        //}
 
 
     }

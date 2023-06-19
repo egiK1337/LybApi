@@ -1,8 +1,8 @@
 ﻿using DataLayer.EfCode;
 using FluentValidation;
 using FluentValidation.Results;
-using ServiceLayer.Abstractions;
 using ServiceLayer.Abstractions.DTO;
+using ServiceLayer.Abstractions.ReturnResult;
 using ServiceLayer.Validations.AuthorValidations;
 
 
@@ -19,14 +19,21 @@ namespace ServiceLayer.AuthorServices.Concrete
             _context = context;
         }
 
-        public ReturnAuthorResult Edit(AuthorDto authorDto)
+        public ReturnResult<AuthorDto> Edit(AuthorDto authorDto)
         {
 
             ValidationResult result = validator.Validate(authorDto);
 
+            List<string> errors = new List<string>();
+
+            foreach (var item in result.Errors)
+            {
+                errors.Add(item.ToString());
+            }
+
             if (!result.IsValid)
             {
-                return new ReturnAuthorResult(result);
+                return new ReturnResult<AuthorDto>(authorDto);
             }
 
             var author = _context.Authors
@@ -42,7 +49,7 @@ namespace ServiceLayer.AuthorServices.Concrete
 
             _context.SaveChanges();
 
-            return new ReturnAuthorResult(author.Name, author.WebUrl);
+            return new ReturnResult<AuthorDto>(authorDto);
         }
     }
 }

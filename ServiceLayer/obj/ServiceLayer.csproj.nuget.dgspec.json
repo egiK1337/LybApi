@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\ServiceLayer\\ServiceLayer.csproj": {}
+    "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\ServiceLayer\\ServiceLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\DataLayer\\DataLayer.csproj": {
+    "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\DataLayer\\DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\DataLayer\\DataLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\DataLayer\\DataLayer.csproj",
         "projectName": "DataLayer",
-        "projectPath": "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\DataLayer\\DataLayer.csproj",
-        "packagesPath": "C:\\Users\\Stasyan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\DataLayer\\obj\\",
+        "projectPath": "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\DataLayer\\DataLayer.csproj",
+        "packagesPath": "C:\\Users\\Stanislav Lukashov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\DataLayer\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Stasyan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Stanislav Lukashov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\ServiceLayer.Abstractions\\ServiceLayer.Abstractions.csproj": {
-                "projectPath": "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\ServiceLayer.Abstractions\\ServiceLayer.Abstractions.csproj"
+              "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\ServiceLayer.Abstractions\\ServiceLayer.Abstractions.csproj": {
+                "projectPath": "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\ServiceLayer.Abstractions\\ServiceLayer.Abstractions.csproj"
               }
             }
           }
@@ -66,6 +71,10 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
@@ -87,21 +96,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\ServiceLayer.Abstractions\\ServiceLayer.Abstractions.csproj": {
+    "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\ServiceLayer.Abstractions\\ServiceLayer.Abstractions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\ServiceLayer.Abstractions\\ServiceLayer.Abstractions.csproj",
+        "projectUniqueName": "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\ServiceLayer.Abstractions\\ServiceLayer.Abstractions.csproj",
         "projectName": "ServiceLayer.Abstractions",
-        "projectPath": "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\ServiceLayer.Abstractions\\ServiceLayer.Abstractions.csproj",
-        "packagesPath": "C:\\Users\\Stasyan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\ServiceLayer.Abstractions\\obj\\",
+        "projectPath": "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\ServiceLayer.Abstractions\\ServiceLayer.Abstractions.csproj",
+        "packagesPath": "C:\\Users\\Stanislav Lukashov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\ServiceLayer.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Stasyan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Stanislav Lukashov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -109,6 +122,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -174,21 +188,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\ServiceLayer\\ServiceLayer.csproj": {
+    "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\ServiceLayer\\ServiceLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\ServiceLayer\\ServiceLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\ServiceLayer\\ServiceLayer.csproj",
         "projectName": "ServiceLayer",
-        "projectPath": "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\ServiceLayer\\ServiceLayer.csproj",
-        "packagesPath": "C:\\Users\\Stasyan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\ServiceLayer\\obj\\",
+        "projectPath": "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\ServiceLayer\\ServiceLayer.csproj",
+        "packagesPath": "C:\\Users\\Stanislav Lukashov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\ServiceLayer\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Stasyan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Stanislav Lukashov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -196,17 +214,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\DataLayer\\DataLayer.csproj": {
-                "projectPath": "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\DataLayer\\DataLayer.csproj"
+              "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\DataLayer\\DataLayer.csproj": {
+                "projectPath": "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\DataLayer\\DataLayer.csproj"
               },
-              "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\ServiceLayer.Abstractions\\ServiceLayer.Abstractions.csproj": {
-                "projectPath": "C:\\Users\\Stasyan\\Desktop\\проги\\Git\\LybApi\\ServiceLayer.Abstractions\\ServiceLayer.Abstractions.csproj"
+              "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\ServiceLayer.Abstractions\\ServiceLayer.Abstractions.csproj": {
+                "projectPath": "C:\\Users\\Stanislav Lukashov\\Desktop\\проги\\Git\\LybApi\\ServiceLayer.Abstractions\\ServiceLayer.Abstractions.csproj"
               }
             }
           }
@@ -228,10 +247,6 @@
             "LinqKit": {
               "target": "Package",
               "version": "[1.2.4, )"
-            },
-            "Microsoft.AspNetCore.Mvc.Core": {
-              "target": "Package",
-              "version": "[2.2.5, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -272,7 +287,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

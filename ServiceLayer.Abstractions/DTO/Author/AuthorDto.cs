@@ -1,6 +1,8 @@
-﻿namespace ServiceLayer.Abstractions.DTO
+﻿using ServiceLayer.Abstractions.ReturnResult;
+
+namespace ServiceLayer.Abstractions.DTO
 {
-    public class AuthorDto
+    public class AuthorDto : IDto
     {
 
         public string Name { get; set; }

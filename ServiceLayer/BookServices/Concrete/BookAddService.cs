@@ -1,9 +1,11 @@
 ﻿using DataLayer.EfClasses;
 using DataLayer.EfCode;
-using ServiceLayer.Abstractions;
+using FluentValidation;
+using FluentValidation.Results;
 using ServiceLayer.Abstractions.DTO;
+using ServiceLayer.Abstractions.ReturnResult;
 using ServiceLayer.Validations.BookValidations;
-using System.ComponentModel.DataAnnotations;
+
 
 namespace ServiceLayer.BookServices.Concrete
 {
@@ -25,7 +27,7 @@ namespace ServiceLayer.BookServices.Concrete
 
             if (!result.IsValid)
             {
-                return new ReturnBookResult("Not done", result);
+                return new ReturnBookResult(result);
             }
 
             var bookInDb = _context.Books
@@ -80,7 +82,7 @@ namespace ServiceLayer.BookServices.Concrete
             _context.Books.Add(newBook);
             _context.SaveChanges();
 
-            return new ReturnBookResult(newBook.Id, "Success");
+            return new ReturnBookResult(newBook.Id);
         }
 
     }

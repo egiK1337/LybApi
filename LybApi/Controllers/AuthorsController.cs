@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Abstractions;
 using ServiceLayer.Abstractions.DTO;
 using ServiceLayer.Abstractions.Filter;
+using ServiceLayer.Abstractions.ReturnResult;
 using ServiceLayer.AuthorServices.Concrete;
 
 namespace LybApi.Controllers;
@@ -11,54 +12,56 @@ namespace LybApi.Controllers;
 
 public class AuthorsController : BaseController
 {
-    //private readonly AuthorsLogic _authorsLogic;
+    //todo AuthorService
+    private readonly AuthorListServices _authorListService;
 
-    //public AuthorsController(AppDbContext dbContext) : base()
-    //{
-    //    _authorsLogic = new AuthorsLogic(dbContext);
-    //}
+    private readonly AuthorEditServices _authorEditService;
 
+    private readonly AuthorAddServices _authorAddService;
+
+    //to do delete
     private readonly EfCoreContext _context;
+
+    public AuthorsController(EfCoreContext dbContext) : base()
+    {
+        _authorListService = new AuthorListServices(dbContext);
+        _authorEditService = new AuthorEditServices(dbContext);
+        _authorAddService = new AuthorAddServices(dbContext);
+    }
+
 
     [HttpGet]
     [Route("AuthorList")]
     public List<AuthorsListDto> AuthorList(Pagination pagenation)
     {
-        var authorListServices = new AuthorListServices(_context);
-        return authorListServices.List(pagenation);
+        return _authorListService.List(pagenation);
     }
 
     [HttpGet]
     [Route("AuthorGetById/{authorId:int}")]
     public AuthorDto AuthorGetById(int authorId)
     {
-        var authorListServices = new AuthorListServices(_context);
-        return authorListServices.GetById(authorId);
+        return _authorListService.GetById(authorId);
     }
 
     [HttpPost]
     [Route("AuthorQuery")]
     public List<AuthorsListDto> AuthorQuery([FromBody] AuthorFilterDto authorFilterDto, Pagination pagenation)
     {
-        var authorListServices = new AuthorListServices(_context);
-        return authorListServices.Query(authorFilterDto, pagenation);
+        return _authorListService.Query(authorFilterDto, pagenation);
     }
-
-
 
     [HttpPost]
     [Route("AuthorAdd")]
-    public ReturnAuthorResult AuthorAdd(AuthorDto authorDto)
+    public ReturnResult<AuthorDto> AuthorAdd(AuthorDto authorDto)
     {
-        var authorAddServices = new AuthorAddServices(_context);
-        return authorAddServices.Add(authorDto);
+        return _authorAddService.Add(authorDto);
     }
 
     [HttpPost]
     [Route("AuthorEdit")]
-    public ReturnAuthorResult AuthorEdit(AuthorDto authorDto)
+    public ReturnResult<AuthorDto> AuthorEdit(AuthorDto authorDto)
     {
-        var authoreEditServices = new AuthorEditServices(_context);
-        return authoreEditServices.Edit(authorDto);
+        return _authorEditService.Edit(authorDto);
     }
 }
