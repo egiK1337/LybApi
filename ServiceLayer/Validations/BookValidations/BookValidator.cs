@@ -3,34 +3,36 @@ using ServiceLayer.Abstractions.DTO;
 
 namespace ServiceLayer.Validations.BookValidations
 {
-    public class BookValidator : AbstractValidator<BookAddDto>
+    public class BookValidator : AbstractValidator<BookDto>
     {
 
         public BookValidator()
         {
 
-            RuleFor(bookAddDto => bookAddDto.Description)
+            RuleFor(bookDto => bookDto.Description)
                 .NotEmpty();
 
-            RuleFor(bookAddDto => bookAddDto.Publisher)
+            RuleFor(bookDto => bookDto.Publisher)
                 .NotEmpty();
 
-            RuleFor(bookAddDto => bookAddDto.Price)
+            RuleFor(bookDto => bookDto.Price)
                 .NotEmpty()
-                .When(bookAddDto => bookAddDto.Price > 0);
+                .When(bookDto => bookDto.Price > 0);
 
-
-            RuleFor(bookAddDto => bookAddDto.ImageUrl)
+            RuleFor(bookDto => bookDto.ImageUrl)
                 .NotEmpty();
 
-            RuleFor(bookAddDto => bookAddDto.WebUrl)
-                .NotEmpty();
+            //RuleFor(bookDto => bookDto.WebUrl)
+            //    .NotEmpty();
 
-            RuleFor(bookAddDto => bookAddDto.Count)
+            RuleFor(bookDto => bookDto.Count)
                 .NotEmpty()
-                .When(bookAddDto => bookAddDto.Count > 0);
+                .When(bookDto => bookDto.Count > 0);
 
-            RuleFor(bookAddDto => bookAddDto.Title)
+            RuleFor(bookDto => bookDto.Title)
+                .NotEmpty();
+
+            RuleFor(bookDto => bookDto.Authors)
                 .NotEmpty();
 
         }

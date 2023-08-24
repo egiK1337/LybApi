@@ -16,10 +16,10 @@ namespace ServiceLayer.BookServices.QueryObjects
 
             if (booksFilter != null)
             {
-                if (booksFilter.DatePublishedFrom != null && booksFilter.DatePublishedFrom != null)
+                if (booksFilter.DatePublishedFrom != null)
                     predicate = predicate.And(x => x.PublishedOn >= booksFilter.DatePublishedFrom);
 
-                if (booksFilter.DatePublishedTo != null && booksFilter.DatePublishedTo != null)
+                if (booksFilter.DatePublishedTo != null)
                     predicate = predicate.And(x => x.PublishedOn <= booksFilter.DatePublishedTo);
 
                 if (booksFilter.Tags != null && booksFilter.Tags.Any())

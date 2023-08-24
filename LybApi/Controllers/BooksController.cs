@@ -4,17 +4,20 @@ using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Abstractions;
 using ServiceLayer.Abstractions.DTO;
 using ServiceLayer.Abstractions.ReturnResult;
+using ServiceLayer.AuthorServices.Concrete;
 using ServiceLayer.BookServices.Concrete;
 
 namespace LybApi.Controllers;
 
-[ApiController]
-[Route("[controller]")]
+//[ApiController]
+//[Route("[controller]")]
 public class BooksController : BaseController
 {
     private readonly BookAddService _bookAddService;
 
     private readonly BookListService _bookListService;
+
+    private readonly BookEditService _bookEditService;
 
     //private readonly EfCoreContext _context;
 
@@ -22,6 +25,7 @@ public class BooksController : BaseController
     {
         _bookAddService = new BookAddService(context);
         _bookListService = new BookListService(context);
+        _bookEditService = new BookEditService(context);
     }
 
     [HttpPost]
@@ -47,10 +51,18 @@ public class BooksController : BaseController
 
     [HttpPost]
     [Route("BookAdd")]
-    public ReturnBookResult Add(BookAddDto bookAddDto)
+    public ReturnResult<BookDto> BookAdd([FromBody] BookDto bookAddDto)
     {
         return _bookAddService.Add(bookAddDto);
     }
+
+    [HttpPost]
+    [Route("BookEdit")]
+    public ReturnResult<BookDto> Edit([FromBody] BookDto bookAddDto)
+    {
+        return _bookEditService.Edit(bookAddDto);
+    }
+
 
 }
 

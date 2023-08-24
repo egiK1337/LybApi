@@ -21,13 +21,11 @@ namespace ServiceLayer.BookServices.Concrete
         public IQueryable<BookListDto> SortFilterPage(SortFilterPageOptions options)
         {
             var booksQuery = _context.Books
-
-                .FilterBooksBy(options.Filter)
-                .MapBookToDto()
-                .OrderBooksBy(options.OrderByOptions);
+                            .FilterBooksBy(options.Filter)
+                            .MapBookToDto()
+                            .OrderBooksBy(options.OrderByOptions);
 
             return booksQuery.Paginate(options);
-
         }
 
         public List<BookListDto> List(Pagination pagenation)
@@ -70,6 +68,7 @@ namespace ServiceLayer.BookServices.Concrete
                 throw new Exception("Такой книги нет");
             }
         }
+
         public PagedDto<BookListDto> Query(SortFilterPageOptions filterPageOptions)
         {
             var service = new BookListService(_context);
@@ -80,7 +79,6 @@ namespace ServiceLayer.BookServices.Concrete
                 items,
                 filterPageOptions.PageNum,
                 filterPageOptions.NumPages);
-
         }
 
         //public List<BookListDto> Query(SortFilterPageOptions filterPageOptions)

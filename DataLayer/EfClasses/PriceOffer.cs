@@ -1,6 +1,8 @@
-﻿namespace DataLayer.EfClasses;
+﻿using ServiceLayer.Abstractions;
 
-public class PriceOffer
+namespace DataLayer.EfClasses;
+
+public class PriceOffer : IEntity
 {
     public PriceOffer()
     {

@@ -3,6 +3,7 @@ using LybApi.Controllers.Base;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Abstractions;
 using ServiceLayer.Abstractions.DTO;
+using ServiceLayer.Abstractions.DTO.Author;
 using ServiceLayer.Abstractions.Filter;
 using ServiceLayer.Abstractions.ReturnResult;
 using ServiceLayer.AuthorServices.Concrete;
@@ -32,9 +33,9 @@ public class AuthorsController : BaseController
 
     [HttpGet]
     [Route("AuthorList")]
-    public List<AuthorsListDto> AuthorList(Pagination pagenation)
+    public List<AuthorsListDto> AuthorList(PageDto pageDto)
     {
-        return _authorListService.List(pagenation);
+        return _authorListService.List(pageDto);
     }
 
     [HttpGet]
@@ -46,21 +47,21 @@ public class AuthorsController : BaseController
 
     [HttpPost]
     [Route("AuthorQuery")]
-    public List<AuthorsListDto> AuthorQuery([FromBody] AuthorFilterDto authorFilterDto, Pagination pagenation)
+    public PagedDto<AuthorsListDto> AuthorQuery([FromBody] AuthorSortFilterPageOption filterPageOptions)
     {
-        return _authorListService.Query(authorFilterDto, pagenation);
+        return _authorListService.Query(filterPageOptions);
     }
 
     [HttpPost]
     [Route("AuthorAdd")]
-    public ReturnResult<AuthorDto> AuthorAdd(AuthorDto authorDto)
+    public ReturnResult<AuthorDto> AuthorAdd([FromBody] AuthorDto authorDto)
     {
         return _authorAddService.Add(authorDto);
     }
 
     [HttpPost]
     [Route("AuthorEdit")]
-    public ReturnResult<AuthorDto> AuthorEdit(AuthorDto authorDto)
+    public ReturnResult<AuthorDto> AuthorEdit([FromBody] AuthorDto authorDto)
     {
         return _authorEditService.Edit(authorDto);
     }

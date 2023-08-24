@@ -20,15 +20,23 @@ namespace ServiceLayer.BookServices.Concrete
 
         BookValidator validator = new BookValidator();
 
-        public ReturnBookResult Add(BookAddDto bookAddDto)
+        public ReturnResult<BookDto> Add(BookDto bookAddDto)
         {
 
             ValidationResult result = validator.Validate(bookAddDto);
 
+            List<string> errors = new List<string>();
+
+            foreach (var item in result.Errors)
+            {
+                errors.Add(item.ToString());
+            }
+
             if (!result.IsValid)
             {
-                return new ReturnBookResult(result);
+                return new ReturnResult<BookDto>(bookAddDto, result.Errors);
             }
+
 
             var bookInDb = _context.Books
                 .Where(
@@ -45,11 +53,11 @@ namespace ServiceLayer.BookServices.Concrete
             {
                 Authors = new List<BookAuthor>(),
                 Publisher = bookAddDto.Publisher,
-                PublishedOn = bookAddDto.PublishedOn.Value,
-                Price = bookAddDto.Price.Value,
+                PublishedOn = bookAddDto.PublishedOn,
+                Price = bookAddDto.Price,
                 ImageUrl = bookAddDto.ImageUrl,
                 Description = bookAddDto.Description,
-                Count = bookAddDto.Count.Value,
+                Count = bookAddDto.Count,
                 Title = bookAddDto.Title
             };
 
@@ -82,7 +90,7 @@ namespace ServiceLayer.BookServices.Concrete
             _context.Books.Add(newBook);
             _context.SaveChanges();
 
-            return new ReturnBookResult(newBook.Id);
+            return new ReturnResult<BookDto>(bookAddDto);
         }
 
     }

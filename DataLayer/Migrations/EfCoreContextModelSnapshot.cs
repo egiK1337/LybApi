@@ -91,6 +91,10 @@ namespace DataLayer.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("WebUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.ToTable("Books");

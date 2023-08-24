@@ -1,4 +1,6 @@
-﻿namespace DataLayer.EfClasses;
+﻿using ServiceLayer.Abstractions;
+
+namespace DataLayer.EfClasses;
 
 public class BookAuthor
 {

@@ -1,6 +1,8 @@
-﻿namespace DataLayer.EfClasses;
+﻿using ServiceLayer.Abstractions;
 
-public class Book
+namespace DataLayer.EfClasses;
+
+public class Book : IEntity
 {
     public Book()
     {
@@ -14,6 +16,7 @@ public class Book
     public decimal Price { get; set; }
     public string ImageUrl { get; set; } = string.Empty;
     public int Count { get; set; }
+    public string WebUrl { get; set; } = string.Empty;
 
     public ICollection<BookAuthor> Authors { get; set; }
     public ICollection<Tag> Tags { get; set; }

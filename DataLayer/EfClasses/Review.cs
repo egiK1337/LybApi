@@ -1,6 +1,8 @@
-﻿namespace DataLayer.EfClasses;
+﻿using ServiceLayer.Abstractions;
 
-public class Review
+namespace DataLayer.EfClasses;
+
+public class Review : IEntity
 {
     public Review()
     {

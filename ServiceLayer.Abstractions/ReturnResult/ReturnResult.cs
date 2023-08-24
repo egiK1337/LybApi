@@ -9,21 +9,21 @@ namespace ServiceLayer.Abstractions.ReturnResult
         //[JsonProperty("Model", NullValueHandling = NullValueHandling.Ignore)]
         public TDto Model { get; set; }
 
-        public List<FluentError> authorErrors { get; set; } = new List<FluentError>();
+        [JsonProperty("errors", NullValueHandling = NullValueHandling.Ignore)]
+        public List<FluentError> Errors { get; set; } = new List<FluentError>();
 
         public ReturnResult()
         {
 
         }
 
-        //to do
         public ReturnResult(TDto dto, List<ValidationFailure> validationFailures = default)
         {
             if (validationFailures != default)
             {
                 foreach (var failure in validationFailures)
                 {
-                    authorErrors.Add(new FluentError()
+                    Errors.Add(new FluentError()
                     {
                         ErrorCode = failure.ErrorCode,
                         ErrorMessage = failure.ErrorMessage,
@@ -31,11 +31,8 @@ namespace ServiceLayer.Abstractions.ReturnResult
                     });
                 }
             }
-
             Model = dto;
         }
-
-
     }
 }
 
